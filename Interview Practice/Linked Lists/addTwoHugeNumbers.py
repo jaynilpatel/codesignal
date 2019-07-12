@@ -1,30 +1,27 @@
-from myLinkedList import LinkedList
+# Singly-linked lists are already defined with this interface:
+# class ListNode(object):
+#   def __init__(self, x):
+#     self.value = x
+#     self.next = None
+
 def addTwoHugeNumbers(a, b):
-    pass
-
-a= LinkedList()
-a.push(9876)
-a.push(5432)
-a.push(1999)
-b = LinkedList()
-b.push(1)
-b.push(8001)
-print(addTwoHugeNumbers(a.head, b.head))
-
-# You're given 2 huge integers represented by linked lists. 
-# Each linked list element is a number from 0 to 9999 that 
-# represents a number with exactly 4 digits. The represented
-#  number might have leading zeros. Your task is to add up 
-#  these huge integers and return the result in the same format.
-
-# Example
-
-# For a = [9876, 5432, 1999] and b = [1, 8001], the output should be
-# addTwoHugeNumbers(a, b) = [9876, 5434, 0].
-
-# Explanation: 987654321999 + 18001 = 987654340000.
-
-# For a = [123, 4, 5] and b = [100, 100, 100], the output should be
-# addTwoHugeNumbers(a, b) = [223, 104, 105].
-
-# Explanation: 12300040005 + 10001000100 = 22301040105.
+    temp_a = a
+    temp_b = b
+    str_a, str_b = "", ""
+    while temp_a:
+        str_a += str(temp_a.value).zfill(4)
+        temp_a = temp_a.next
+    while temp_b:
+        str_b += str(temp_b.value).zfill(4)
+        temp_b = temp_b.next
+    c = str(int(str_a) + int(str_b))
+    c = c[::-1]
+    c = [int(c[0+i:4+i][::-1]) for i in range(0, len(c), 4)][::-1]
+    print(c)
+    result = ListNode(c[0])
+    head = result
+    for val in c[1:]:
+        new_node = ListNode(val)
+        result.next = new_node
+        result = new_node
+    return head
