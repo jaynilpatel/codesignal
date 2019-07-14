@@ -1,8 +1,8 @@
 # Singly-linked lists are already defined with this interface:
-# class ListNode(object):
-#   def __init__(self, x):
-#     self.value = x
-#     self.next = None
+class ListNode(object):
+  def __init__(self, x):
+    self.value = x
+    self.next = None
 
 def addTwoHugeNumbers(a, b):
     temp_a = a
@@ -17,7 +17,6 @@ def addTwoHugeNumbers(a, b):
     c = str(int(str_a) + int(str_b))
     c = c[::-1]
     c = [int(c[0+i:4+i][::-1]) for i in range(0, len(c), 4)][::-1]
-    print(c)
     result = ListNode(c[0])
     head = result
     for val in c[1:]:
