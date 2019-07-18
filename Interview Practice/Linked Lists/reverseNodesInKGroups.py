@@ -38,10 +38,6 @@ def reverseNodesInKGroups(l, k):
             le = le - k
             i = i + 1
         temp_end.next = curr
-        temp = start
-        while temp:
-            print(temp.value)
-            temp = temp.next
         return start
 
 # l = [1, 2, 3, 4, 5] , k=2
